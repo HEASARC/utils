@@ -1,0 +1,56 @@
+# Generic FITS catalog (.cat) file generator template settings
+# for make_generic_catfile.pl (v 0.4 March 2, 2020)
+# 
+# Burstcube daily final version data template
+# Created 27 October, 2021, updated 29 June 2023
+#
+# Variables within settings should be named in upper case with ':' around
+# them. Some canned settings are already available: new ones can be 
+# defined (or redefined) with Unix (NOT regex) style wildcards
+# E.g. variable HEALPIX [0-9][0-9][0-9] for three-digit Healpixel number
+# PATH (or ROOTPATH), SUBDIR, and CATNAME must be defined
+#  
+
+# These variables describe where to find the data (path/subdir/)
+# Daily data OBS_ID is in the form YYMMDD, with first possible year being 2022
+# Trigger data (if any) has a nine-digit YYMMDDTTT form where TTT is the 
+# triggertime (000-999: fraction of day)
+variable PATH /processing/burstcube/fake_data/daily/
+variable OBS_ID 2[2-9][01][0-9][0-3][0-9]
+variable TRIG_ID 2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9]
+variable SUBDIR 202[2-9]_[01][0-9]/:OBS_ID:/
+
+# These variables define the name and the destination of the catalog file
+variable CATNAME bc:OBS_ID:.cat
+variable CATDEST auxil
+
+# Additional mission specific variables to find the files
+
+#
+# Template for sets of files 
+#
+filelist auxil/bc:OBS_ID:*
+filelist events/:TRIG_ID:/bc:OBS_ID:*
+filelist events/bc:OBS_ID:*
+filelist monitor/bc:OBS_ID:*
+#
+# Template for file types, file class, and description
+#
+#        file_suffix           FORMAT TYPE     FILECLAS      DESCRIPT
+#
+category .cat                   FITS  tapecat  catalog       FITS-format product catalog
+category csa.hk                 FITS  cs0_hk   housekeeping  Instrument housekeeping file
+category .hk                    FITS  hk       housekeeping  Spacecraft housekeeping file
+category _joblog.html           HTML  joblog   log           HTML processing job log 
+category cs0_[1-5|a-e]cbd.fits  FITS  monitor  monitor       Detector CS0 binned 16 channel spectra 
+category cs1_[1-5|a-e]cbd.fits  FITS  monitor  monitor       Detector CS1 binned 16 channel spectra 
+category cs2_[1-5|a-e]cbd.fits  FITS  monitor  monitor       Detector CS2 binned 16 channel spectra 
+category cs3_[1-5|a-e]cbd.fits  FITS  monitor  monitor       Detector CS3 binned 16 channel spectra 
+category cs0_atd2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].fits  FITS  event  event     Alert trigger detector CS0
+category cs1_atd2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].fits  FITS  event  event     Alert trigger detector CS1
+category cs2_atd2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].fits  FITS  event  event     Alert trigger detector CS2
+category cs3_atd2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].fits  FITS  event  event     Alert trigger detector CS3
+category cs0_tte2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].evt   FITS  event  event     T3E/RTTE detector CS0 trigger
+category cs1_tte2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].evt   FITS  event  event     T3E/RTTE detector CS1 trigger
+category cs2_tte2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].evt   FITS  event  event     T3E/RTTE detector CS2 trigger
+category cs3_tte2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9].evt   FITS  event  event     T3E/RTTE detector CS3 trigger

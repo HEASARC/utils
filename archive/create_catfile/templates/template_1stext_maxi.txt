@@ -1,0 +1,21 @@
+## Standard valid for all files
+TELESCOP= 'MAXI    '           / Mission name
+ORIGIN  = 'ISAS/JAXA'          / Origin of FITS file
+RADECSYS= 'FK5     '           / World Coordinate System
+EQUINOX =                2000. / Equinox for coordinate system
+MJDREFI =                51544 / MJD reference day
+MJDREFF =  0.00074287037037037 / MJD reference(fraction of day)
+TIMEREF = 'LOCAL   '           / reference time
+TIMESYS = 'TT      '           / time measured from
+TIMEUNIT= 's       '           / unit for time keyword
+EXTNAME = 'CATALOG '           / name of this binary table extension
+
+# Taken from the first auxil FITS file
+OBS_ID  = '0010050103'         / Observation ID
+DATE-OBS= '2017-06-29T09:36:36' / Start date of observations
+DATE-END= '2017-06-29T22:05:17' / End date of observations
+
+##Recalculated 
+DATE    = '2019-06-15T07:31:29' / date of file creation (GMT)
+CHECKSUM= '5doE5Zn95bnC5Zn9'   / HDU checksum updated 2018-02-27T12:08:06
+DATASUM = '         0'         / data unit checksum updated 2018-02-27T12:08:06

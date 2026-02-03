@@ -1,0 +1,48 @@
+CHANGES
+
+make_generic_catfile.pl
+ Updated logic to correctly interpret wildcards in file paths in order to find files in subdirectories
+below the main. E.g
+
+/root/directory/OBS/auxil
+                   /events
+                   /events/subdirectory/
+                   /events/subdirectory/subsubdirectory
+
+Catalog file generator will now get all files these specified directories
+
+
+catfile_template_bc_daily.txt
+
+Added logic to get trigger events in subdirectory. To do this, added two lines to catfile template for 
+daily BurstCube data
+
+variable TRIG_ID 2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9]
+
+AND
+
+filelist events/:TRIG_ID:/bc:OBS_ID:*
+
+
+
+NOTE: These changes only apply to daily data (both quicklook and final), and presume all data has 
+observation dates no earlier than 2022-01-01 and no later than 2069-12-31. The settings
+for transient data do not need any similar adjustments.
+
+
+v 0.8 (8 Aug 2025)
+
+   Better error trapping and exit if it finds spelling errors (e.g. "categry" instead of "category")
+   or other unexpected lines in the template
+
+   Better error reporting on failure to find or resolve keyword values
+
+   Support for using variables in categories. E.g.
+
+category _sgm_:TRIG_ID: .....
+
+   will resolve :TRIG_ID: to the pattern defined earlier in the template (if possible, and exit with an informative error
+   message if it fails).
+
+   Explicitly print the program name and version when run (requested feature)
+

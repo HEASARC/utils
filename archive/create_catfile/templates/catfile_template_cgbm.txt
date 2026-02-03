@@ -1,0 +1,68 @@
+# Generic FITS catalog (.cat) file generator template settings
+# for make_generic_catfile.pl (v 0.4 March 2, 2020)
+# 
+# XLCalibur data template
+# Created 04 August, 2025
+#
+# Variables within settings should be named in upper case with ':' around
+# them. Some canned settings are already available: new ones can be 
+# defined (or redefined) with Unix (NOT regex) style wildcards
+# E.g. variable HEALPIX [0-9][0-9][0-9] for three-digit Healpixel number
+# PATH (or ROOTPATH), SUBDIR, and CATNAME must be defined
+#  
+
+# These variables describe where to find the data (path/subdir/)
+# OBS_ID is in the form YYYMMDD, with first possible value being
+# 20151006
+
+variable PATH /FTP/.calet_archive/cgbm_v3.2a_240523/obs
+variable OBS_ID 20[12][0-9][01][0-9][0-3][0-9]
+variable TRIG_ID [0-2][0-9][0-5][0-9][0-5][0-9]
+variable SUBDIR 20[12][0-9]/:OBS_ID:/
+
+# These variables define the name and the destination of the catalog file
+variable CATNAME cgbm_:OBS_ID:.cat
+variable CATDEST auxil
+
+# Additional mission specific variables to find the files
+
+#
+# Template for sets of files 
+#
+filelist auxil/cgbm_:OBS_ID:*
+filelist monitor/cgbm_:OBS_ID:*
+filelist events/cgbm_:OBS_ID:*
+filelist products/cgbm_:OBS_ID:*
+#
+# Template for file types, file class, and description
+#
+#        file_suffix            FORMAT TYPE         FILECLAS      DESCRIPT
+#
+category .cat                   FITS   tapecat      catalog       FITS-format product catalog
+category .att                   FITS   attitude     attitude      ISS attitude file
+category .dt                    FITS   dt           deadtime      Dead time file
+category .gti                   FITS   gti          gti           GTI file
+category .hk                    FITS   hk           housekeeping  Housekeeping file
+category .iat                   FITS   attitide     attitude      ISS Attitude File
+category .orb                   FITS   orbit        orbit         Orbit file
+category .tim                   FITS   time         time          Time information for CGBM
+category _hx1_hph.fits          FITS   monitor      monitor       HXM1 High Gain PH monitor data
+category _hx1_hth.fits          FITS   monitor      monitor       HXM1 High Gain TH monitor data
+category _hx1_lph.fits          FITS   monitor      monitor       HXM1 Low Gain PH monitor data
+category _hx1_lth.fits          FITS   monitor      monitor       HXM1 Low Gain TH monitor data
+category _hx2_hph.fits          FITS   monitor      monitor       HXM2 High Gain PH monitor data
+category _hx2_hth.fits          FITS   monitor      monitor       HXM2 High Gain TH monitor data
+category _hx2_lph.fits          FITS   monitor      monitor       HXM2 Low Gain PH monitor data
+category _hx2_lth.fits          FITS   monitor      monitor       HXM2 Low Gain TH monitor data
+category _sgm_hph.fits          FITS   monitor      monitor       SGM High Gain PH monitor data
+category _sgm_hth.fits          FITS   monitor      monitor       SGM High Gain TH monitor data
+category _sgm_lph.fits          FITS   monitor      monitor       SGM Low Gain PH monitor data
+category _sgm_lth.fits          FITS   monitor      monitor       SGM Low Gain TH monitor data
+category _hx1_:TRIG_ID:.evt     FITS   event        event         HXM1 triggered event file
+category _hx2_:TRIG_ID:.evt     FITS   event        event         HXM2 triggered event file
+category _sgm_:TRIG_ID:.evt     FITS   event        event         SGM triggered event file
+category _hx1_:TRIG_ID:.lc      FITS   lc           lightcurve    HXM1 triggered lightcurve file
+category _hx2_:TRIG_ID:.lc      FITS   lc           lightcurve    HXM2 triggered lightcurve file
+category _sgm_:TRIG_ID:.lc      FITS   lc           lightcurve    SGM triggered lightcurve file
+category _all_:TRIG_ID:.lc.gif  GIF    lc           lightcurve    Triggered lightcurve plot all instruments
+category _sgm_:TRIG_ID:.lc.gif  GIF    lc           lightcurve    Triggered lightcurve plot SGM

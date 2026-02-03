@@ -1,0 +1,73 @@
+# Generic FITS catalog (.cat) file generator template settings
+# for make_generic_catfile.pl (v 0.4 March 2, 2020)
+# 
+# Burstcube transient final data version template
+# Created October 27, 2021
+#
+# Variables within settings should be named in upper case with ':' around
+# them. Some canned settings are already available: new ones can be 
+# defined (or redefined) with Unix (NOT regex) style wildcards
+# E.g. variable HEALPIX [0-9][0-9][0-9] for three-digit Healpixel number
+# PATH (or ROOTPATH), SUBDIR, and CATNAME must be defined
+#
+
+# These variables describe where to find the data (path/subdir/)
+# Transient/trigger data OBS_ID is in the form YYMMDDXXX, with 
+# first possible year being 2022 and latest is 2029
+variable PATH /processing/burstcube/fake_data/final/transient/
+variable OBS_ID 2[2-9][01][0-9][0-3][0-9][0-9][0-9][0-9]
+variable SUBDIR 202[2-9]_[01][0-9]/:OBS_ID:/
+
+# These variables define the name and the destination of the catalog file
+variable CATNAME bc:OBS_ID:.cat
+variable CATDEST products
+
+# Additional mission specific variables to find the files
+
+#
+# Template for sets of files 
+#
+filelist products/bc:OBS_ID:*
+filelist plots/bc:OBS_ID:*
+#
+# Template for file types, file class, and description
+#
+#        file_suffix       FORMAT TYPE         FILECLAS      DESCRIPT
+#
+category .cat               FITS  tapecat      catalog       FITS-format product catalog
+category cs0_tte.lc         FITS  cs0_lc       lightcurve    Detector CS0 lightcurves
+category cs1_tte.lc         FITS  cs1_lc       lightcurve    Detector CS1 lightcurves
+category cs2_tte.lc         FITS  cs2_lc       lightcurve    Detector CS2 lightcurves
+category cs3_tte.lc         FITS  cs3_lc       lightcurve    Detector CS3 lightcurves
+category csa_tte.lc         FITS  csa_lc       lightcurve    Lightcurves for all CSA detectors
+category cs0_tte.pha        FITS  cs0_pha      spectra       Detector CS0 PHA2 spectra file
+category cs1_tte.pha        FITS  cs1_pha      spectra       Detector CS1 PHA2 spectra file
+category cs2_tte.pha        FITS  cs2_pha      spectra       Detector CS2 PHA2 spectra file
+category cs3_tte.pha        FITS  cs3_pha      spectra       Detector CS3 PHA2 spectra file
+category cs0_bg.pha         FITS  cs0_bkg      spectra       Detector CS0 background spectra file
+category cs1_bg.pha         FITS  cs1_bkg      spectra       Detector CS1 background spectra file
+category cs2_bg.pha         FITS  cs2_bkg      spectra       Detector CS2 background spectra file
+category cs3_bg.pha         FITS  cs3_bkg      spectra       Detector CS3 background spectra file
+category cs0.rsp            FITS  cs0_rsp      spectra       Detector CS0 response matrix file
+category cs1.rsp            FITS  cs1_rsp      spectra       Detector CS1 response matrix file
+category cs2.rsp            FITS  cs2_rsp      spectra       Detector CS2 response matrix file
+category cs3.rsp            FITS  cs3_rsp      spectra       Detector CS3 response matrix file
+category csa.fits           FITS  csa          info          All detector trigger localization information file
+category _joblog.html       HTML  joblog       log           HTML processing job log 
+category cs0_atdlc.gif      GIF   cs0_lc       plot          Detector CS0 ATD lightcurve plot 
+category cs1_atdlc.gif      GIF   cs1_lc       plot          Detector CS1 ATD lightcurve plot 
+category cs2_atdlc.gif      GIF   cs2_lc       plot          Detector CS2 ATD lightcurve plot 
+category cs3_atdlc.gif      GIF   cs3_lc       plot          Detector CS3 ATD lightcurve plot 
+category cs0_atdpha.gif     GIF   cs0_pha      plot          Detector CS0 ATD spectra plot 
+category cs1_atdpha.gif     GIF   cs1_pha      plot          Detector CS1 ATD spectra plot 
+category cs2_atdpha.gif     GIF   cs2_pha      plot          Detector CS2 ATD spectra plot 
+category cs3_atdpha.gif     GIF   cs3_pha      plot          Detector CS3 ATD spectra plot 
+category cs0_ttelc.gif      GIF   cs0_lc       plot          Detector CS0 T3E/RTTE lightcurve plot 
+category cs1_ttelc.gif      GIF   cs1_lc       plot          Detector CS1 T3E/RTTE lightcurve plot 
+category cs2_ttelc.gif      GIF   cs2_lc       plot          Detector CS2 T3E/RTTE lightcurve plot 
+category cs3_ttelc.gif      GIF   cs3_lc       plot          Detector CS3 T3E/RTTE lightcurve plot 
+category cs0_ttepha.gif     GIF   cs0_pha      plot          Detector CS0 T3E/RTTE spectra plot 
+category cs1_ttepha.gif     GIF   cs1_pha      plot          Detector CS1 T3E/RTTE spectra plot 
+category cs2_ttepha.gif     GIF   cs2_pha      plot          Detector CS2 T3E/RTTE spectra plot 
+category cs3_ttepha.gif     GIF   cs3_pha      plot          Detector CS3 T3E/RTTE spectra plot
+category csa.gif            GIF   csa          plot          Plot image of the localization 

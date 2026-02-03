@@ -1,0 +1,85 @@
+# Generic FITS catalog (.cat) file generator template settings
+# v 0.2 Dec 8, 2019
+# 
+# MAXI event and auxil data catalog summary file
+#
+#
+# Variables within settings should be named in upper case with ':' around
+# them. Some canned settings are already available: new ones can be 
+# defined (or redefined) with Unix (NOT regex) style wildcards
+# E.g. variable HEALPIX [0-9][0-9][0-9] for three-digit Healpixel number
+# PATH (or ROOTPATH) and CATNAME must be defined
+#
+# Write to _v23 branch only
+#variable PATH /FTP/.maxi_archive/
+variable PATH /nasA_maxi1/ftp/.ver2.3/mxdata/obs/
+variable SUBDIR MJD:MJD1000:_mod/MJD:MJD:/
+variable HEALPIX [0-9][0-9][0-9]
+variable CATNAME mx_mjd:MJD:.cat
+#
+# Range limit
+# Constrain search to only a subset of possible values for variables above
+# Can be overrided on command line
+#
+range MJD 56700 56709
+#
+# Template for sets of files 
+#
+filelist auxil/mx_mjd:MJD:*
+filelist events/gsc_low/mx_mjd:MJD:_gsc_low_:HEALPIX:.evt.gz
+filelist events/gsc_med/mx_mjd:MJD:_gsc_med_:HEALPIX:.evt.gz
+filelist events/ssc_med/mx_mjd:MJD:_ssch_med_:HEALPIX:.evt.gz
+filelist events/ssc_med/mx_mjd:MJD:_sscz_med_:HEALPIX:.evt.gz
+#
+# Template for file types, file class, and description
+#
+#        file_suffix       FORMAT TYPE         FILECLAS      DESCRIPT
+#
+category .cat               FITS  tapecat      catalog       FITS-format product catalog
+category .att               FITS  attitude     attitude      MAXI attitude file
+category .fra               FITS  time         time          Free-run clock file for GSC-A (GSC 0,1,2,3,4,5)
+category .frb               FITS  time         time          Free-run clock file for GSC-B (GSC 6,7,8,9,a,b)
+category att.hk             FITS  att_hk       housekeeping  Attitude status file 
+category gsc.hk             FITS  gsc_hk       housekeeping  GSC housekeeping file
+category .mkf               FITS  filter       filter        Make filter file for GSC and SSC
+category ssch.mkf           FITS  ssch_filter  filter        SSC (Horizontal) CCD make filter file
+category sscz.mkf           FITS  sscz_filter  filter        SSC (Zenith) CCD make filter file
+category ssch_dp.hk         FITS  ssch_dp_hk   housekeeping  SSC (Horizontal) data processor housekeeping file
+category sscz_dp.hk         FITS  sscz_dp_hk   housekeeping  SSC (Zenith) data proccesor housekeeping file
+category ssch_e.hk          FITS  ssch_e_hk    housekeeping  SSC (Horizontal) CCD housekeeping file
+category sscz_e.hk          FITS  sscz_e_hk    housekeeping  SSC (Zenith) CCD housekeeping file
+category .iac               FITS  attitude     attitude      ISS Attitude File (Newer style)
+category .iat               FITS  attitide     attitude      ISS Attitude File
+category .isa               FITS  ancil        ancillary     Joint angles of the solar paddles: alpha (SARJ)
+category .isp               FITS  ancil        ancillary     Joint angles of the solar paddles: beta
+category .orb               FITS  orbit        orbit         Orbit file
+category .rbm               FITS  ancill       ancilliary    Radiation Belt Monitor file
+category .tim               FITS  time         time          Time information for GSC and SSC
+category gsc0_low.gti       FITS  gsc0_low_gti gti           GSC Low Camera 0 Good Time Intervals
+category gsc0_med.gti       FITS  gsc0_med_gti gti           GSC Med Camera 0 Good Time Intervals
+category gsc1_low.gti       FITS  gsc1_low_gti gti           GSC Low Camera 1 Good Time Intervals
+category gsc1_med.gti       FITS  gsc1_med_gti gti           GSC Med Camera 1 Good Time Intervals
+category gsc2_low.gti       FITS  gsc2_low_gti gti           GSC Low Camera 2 Good Time Intervals
+category gsc2_med.gti       FITS  gsc2_med_gti gti           GSC Med Camera 2 Good Time Intervals
+category gsc3_low.gti       FITS  gsc3_low_gti gti           GSC Low Camera 3 Good Time Intervals
+category gsc3_med.gti       FITS  gsc3_med_gti gti           GSC Med Camera 3 Good Time Intervals
+category gsc4_low.gti       FITS  gsc4_low_gti gti           GSC Low Camera 4 Good Time Intervals
+category gsc4_med.gti       FITS  gsc4_med_gti gti           GSC Med Camera 4 Good Time Intervals
+category gsc5_low.gti       FITS  gsc5_low_gti gti           GSC Low Camera 5 Good Time Intervals
+category gsc5_med.gti       FITS  gsc5_med_gti gti           GSC Med Camera 5 Good Time Intervals
+category gsc6_low.gti       FITS  gsc6_low_gti gti           GSC Low Camera 6 Good Time Intervals
+category gsc6_med.gti       FITS  gsc6_med_gti gti           GSC Med Camera 6 Good Time Intervals
+category gsc7_low.gti       FITS  gsc7_low_gti gti           GSC Low Camera 7 Good Time Intervals
+category gsc7_med.gti       FITS  gsc7_med_gti gti           GSC Med Camera 7 Good Time Intervals
+category gsc8_low.gti       FITS  gsc8_low_gti gti           GSC Low Camera 8 Good Time Intervals
+category gsc8_med.gti       FITS  gsc8_med_gti gti           GSC Med Camera 8 Good Time Intervals
+category gsc9_low.gti       FITS  gsc9_low_gti gti           GSC Low Camera 9 Good Time Intervals
+category gsc9_med.gti       FITS  gsc9_med_gti gti           GSC Med Camera 9 Good Time Intervals
+category gsca_low.gti       FITS  gsca_low_gti gti           GSC Low Camera A Good Time Intervals
+category gsca_med.gti       FITS  gsca_med_gti gti           GSC Med Camera A Good Time Intervals
+category gscb_low.gti       FITS  gscb_low_gti gti           GSC Low Camera B Good Time Intervals
+category gscb_med.gti       FITS  gscb_med_gti gti           GSC Med Camera B Good Time Intervals
+category ssch_med_[0-7][0-9][0-9].evt FITS  event  event     SSC (Horizontal) Event file
+category sscz_med_[0-7][0-9][0-9].evt FITS  event  event     SSC (Zenith) Event file
+category gsc_med_[0-7][0-9][0-9].evt  FITS  event  event     GSC Medium Event file
+category gsc_low_[0-7][0-9][0-9].evt  FITS  event  event     GSC Low Event file

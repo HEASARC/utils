@@ -1,0 +1,16 @@
+# Template for CALET CGBM FITS catalog file primary header
+# 2025-08-08
+#
+# standard valid for all files
+TELESCOP= 'CALET'              / Mission name
+INSTRUME= 'CGBM'               / Instrument name
+ORIGIN  = 'JAXA, WCOM'         / Origin of FITS file
+
+# Placeholder settings, computed from data file(s)
+OBS_ID  = ''                   / Observation ID
+DATE-OBS= ''                   / Start date of observations
+DATE-END= ''                   / End date of observations
+
+##Recalculated when .cat file created
+DATE    = ''                   / date of file creation (GMT)
+CHECKSUM= ''                   / HDU checksum 

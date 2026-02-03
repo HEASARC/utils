@@ -1,0 +1,18 @@
+# Template for BurstCube FITS catalog file primary header
+# 2021-10-28
+#
+# standard valid for all files
+TELESCOP= 'BURSTCUBE'          / Mission name
+INSTRUME= 'CS '                / Instrument name
+ORIGIN  = 'GSFC    '           / Origin of FITS file
+EXTNAME = 'CATALOG '           / name of this binary table extension
+
+# Placeholder settings, computed from data file(s)
+OBS_ID  = ''                   / Observation ID
+DATE-OBS= ''                   / Start date of observations
+DATE-END= ''                   / End date of observations
+
+##Recalculated when .cat file created
+DATE    = ''                   / date of file creation (GMT)
+CHECKSUM= ''                   / HDU checksum 
+DATASUM = ''                   / data unit checksum 
