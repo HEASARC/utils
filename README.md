@@ -4,11 +4,10 @@ This package includes some general utilities for handling various HEASARC tasks.
 
 ## Contents
 
-```
-archive/    - scripts to work on the archive
-xspec/      - utilities related to Xspec
-other/      - misc other scripts
-```
+- archive/    - scripts to work on the archive
+- caldb/      - scripts related to [CALDB](https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/) files
+- xspec/      - utilities related to [Xspec](https://heasarc.gsfc.nasa.gov/docs/software/xspec/index.html)
+- other/      - misc other scripts
 
 ## Contact Us
 
